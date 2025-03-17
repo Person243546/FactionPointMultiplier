@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+iCku1NelnM=",
+  "success": true,
+  "projectFilePath": "C:\\GOG Games\\RimWorld\\Mods\\Faction Point Multiplier\\Source\\FactionPointMultiplier\\FactionPointMultiplier\\FactionPointMultiplier.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp\\.nuget\\packages\\krafs.publicizer\\2.3.0\\krafs.publicizer.2.3.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\krafs.rimworld.ref\\1.5.4297\\krafs.rimworld.ref.1.5.4297.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\lib.harmony\\2.3.5\\lib.harmony.2.3.5.nupkg.sha512"
+  ],
+  "logs": []
+}

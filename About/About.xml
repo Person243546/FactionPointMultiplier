@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Faction point multiplier</name>
+  <author>Person</author>
+  <supportedVersions>
+		<li>1.5</li>
+  </supportedVersions>
+  <packageId>person.factionpointmultiplier</packageId>
+  <description>multiplies a faction's raid points by a value specified in the mod settings.</description>
+</ModMetaData>
