@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactionPointMultiplierPatch.cs" />
+    <Compile Include="FactionPointMultiplier.cs" />
     <Compile Include="Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
