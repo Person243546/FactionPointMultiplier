@@ -3,7 +3,6 @@ using Verse;
 using UnityEngine;
 using RimWorld;
 using static FactionPointMultiplier.Startup;
-using UnityEngine.UIElements;
 
 namespace FactionPointMultiplier
 {
@@ -14,7 +13,7 @@ namespace FactionPointMultiplier
         public List<string> factionlist1 = new List<string>();
         public List<float> multiplierlist2 = new List<float>();
         private static Vector2 scrollPosition = new Vector2(0f, 0f);
-        //private static float totalContentHeight = 1000f;
+        private static float totalContentHeight = 1000f;
         private const float ScrollBarWidthMargin = 18f;
         public override void ExposeData()
         {
@@ -24,27 +23,30 @@ namespace FactionPointMultiplier
 
         public void DoSettingsWindowContents(Rect inRect)
         {
-            int FactionsLength = allFactions.Length;
-            var totalContentHeight = FactionsLength * 10f;
-            Widgets.DrawHighlight(inRect);
-            bool scrollBarVisible = totalContentHeight > inRect.height;
-            var scrollViewTotal = new Rect(0f, 0f, inRect.width - (scrollBarVisible ? ScrollBarWidthMargin : 0), totalContentHeight);
+            Rect outerRect = inRect.ContractedBy(10f);
+            Widgets.DrawHighlight(outerRect);
+            bool scrollBarVisible = totalContentHeight > outerRect.height;
+            var scrollViewTotal = new Rect(0f, 0f, outerRect.width - (scrollBarVisible ? ScrollBarWidthMargin : 0), totalContentHeight);
+            Widgets.BeginScrollView(outerRect, ref scrollPosition, scrollViewTotal);
             Listing_Standard ls = new Listing_Standard();
-            ls.Begin(inRect);
+            ls.Begin(new Rect(0f, 0f, scrollViewTotal.width, 9999f));
             ls.GapLine();
             ls.Label("Faction Point Multipliers:");
-            Widgets.BeginScrollView(inRect, ref scrollPosition, scrollViewTotal);
-            for (var i = 0; i < FactionsLength; i++)
+            for (var i = 0; i < allFactions.Length; i++)
             {
                 var name = allFactions[i].defName;
                 var value = FactionPointMultiplierMod.settings.factionandmultiplier[name];
                 string buf = value.ToString();
                 ls.TextFieldNumericLabeled<float>(name, ref value, ref buf, 0.01f, 100f);
+                //ls.Label(i.ToString());
                 FactionPointMultiplierMod.settings.factionandmultiplier[name] = value;
             }
             //ls.Label("Height: " + inRect.height + " Width " + inRect.width + " Number " + totalContentHeight);
-            Widgets.EndScrollView();
+            //Log.Message("Height: " + inRect.height + " Width " + inRect.width + " Number " + totalContentHeight);
+            ls.GapLine();
+            totalContentHeight = ls.CurHeight + 5f;
             ls.End();
+            Widgets.EndScrollView();
         }
     }
 

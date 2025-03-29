@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
-
 using Verse;
 
 namespace FactionPointMultiplier
@@ -37,12 +36,14 @@ namespace FactionPointMultiplier
         private static void FactionlistMaker() 
         {
             var workinglist = new List<FactionDef>();
+            Log.Message("Defcount is " + DefDatabase<FactionDef>.DefCount);
             for (int i = DefDatabase<FactionDef>.DefCount; i-- > 0;)
             {
                 var def = DefDatabase<FactionDef>.AllDefsListForReading[i];
                 if (def.pawnGroupMakers != null)
                 {
                     workinglist.Add(def);
+                    //Log.Message("Faction: " + def.defName+ ", Number: " + i);
                 }
             }
             allFactions = workinglist.ToArray();
