@@ -3,7 +3,7 @@
   <name>Faction point multiplier</name>
   <author>Person</author>
   <supportedVersions>
-		<li>1.5</li>
+		<li>1.6</li>
   </supportedVersions>
   <packageId>person.factionpointmultiplier</packageId>
   <description>multiplies a faction's raid points by a value specified in the mod settings.</description>
